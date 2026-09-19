@@ -1,10 +1,10 @@
 # Continual-Counsel: Edge-Deployable Legal Compliance Assistant with Orthogonal LoRA & Verifiable Auditability
 
-[![CI Test & Offline Isolation Gate](https://github.com/continual-counsel/continual-counsel/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-riddhimaheshwari%2FInterIIT-181717?logo=github)](https://github.com/riddhimaheshwari/InterIIT)
 
-**Continual-Counsel** is an edge-deployable legal and regulatory compliance assistant designed to ingest quarterly regulatory updates without full retraining, without catastrophic forgetting of earlier regimes, and with strict verifiable auditability.
+**Continual-Counsel** (The Amnesiac Magistrate) is an edge-deployable legal and regulatory compliance assistant engineered to ingest quarterly regulatory updates (Q1–Q4) without full retraining, without catastrophic forgetting of earlier regimes, and with strict verifiable auditability.
 
 ---
 
@@ -13,7 +13,7 @@
 The codebase is physically partitioned into two non-overlapping loops to satisfy sovereign compliance and edge hardware deployment constraints:
 
 ```
-continual-counsel/
+InterIIT/
   configs/
     base.yaml              # Base model fallback cascade, data paths, FAISS index directory
     training.yaml          # LoRA rank/alpha, lambda_ortho, replay ratio, merge cadence, gates
@@ -21,16 +21,16 @@ continual-counsel/
     regimes/               # Quarterly regulatory texts (Q1..Q4: AI Act, Transparency, Liability, Sovereignty)
     replay_cache/          # Golden + refreshed synthetic replay sets per regime
   src/
-    offline/               # [TRAINING MACHINE ONLY]
+    offline/               # [TRAINING / ADAPTER COMPLIANCE LOOP]
       replay_gen.py        # Step A: Golden replay capture + self-consistency & grounding filters
-      train_adapter.py     # Step C: O-LoRA training loop with incremental QR orthonormal basis
+      train_adapter.py     # Step C: O-LoRA training loop with incremental QR orthonormal basis & bfloat16 guards
       validate.py          # Step D: Automated BWT degradation gate (< 3% threshold)
       merge.py             # Step E: TIES-merge parameter consolidation (Trim, Elect, Average)
       distill.py           # Feature-level hidden-state matching distillation loss
-      dpo_polish.py        # Optional DPO alignment pass with Option (a) re-validation gate
-      pipeline.py          # Orchestrates A -> B -> C -> D -> E for quarterly update cycles
+      dpo_polish.py        # DPO alignment pass with Option (a) re-validation gate
+      pipeline.py          # Orchestrates A -> B -> C -> D -> E with temporal bounding
     online/                # [EDGE INFERENCE ONLY - ZERO NETWORK CALLS]
-      retrieval.py         # Local FAISS index + temporal metadata filter + SHA-256 index hashing
+      retrieval.py         # Local FAISS index + temporal chronological metadata filter + SHA-256 index hashing
       confidence_gate.py   # Similarity gate blocking generation on ungrounded queries (< 0.65)
       verify.py            # Self-verification pass cross-checking cited clauses against retrieved context
       infer.py             # Glues frozen base + merged adapter + retrieval + verify + audit log
@@ -44,15 +44,17 @@ continual-counsel/
       metrics.py           # Backward Transfer (BWT), Forward Transfer (FWT), citation hallucinations
       report.py            # Generates progression curves for the dashboard
   dashboard/
-    app.py                 # Streamlit dashboard (BWT/FWT curves, basis rank sawtooth, audit explorer)
+    app.py                 # Streamlit dashboard (BWT/FWT curves, basis rank sawtooth, audit explorer, live query)
   scripts/
     run_quarter_update.sh  # CLI runner for quarterly pipeline updates
     run_full_eval.sh       # Runs full Q1-Q4 progression and tests
     export_gguf.sh         # Quantizes consolidated adapter to 4-bit GGUF for edge deployment
     smoke_test_no_network.sh # AST inspector and socket blocker proving zero network egress
+    generate_pdf_guide.py  # Automated compiler for comprehensive architectural PDF documentation
   .github/workflows/ci.yml # Automated CI pipeline running pytest and network isolation gate
   Dockerfile               # Edge inference container with network isolation
-  tests/                   # Pytest suite
+  Dockerfile.dashboard     # Standalone container for dashboard deployment
+  tests/                   # Comprehensive pytest test suite
 ```
 
 > **Zero-Network Invariant**: `src/online/` contains **0 HTTP client imports** (`requests`, `httpx`, `aiohttp`, `urllib.request`). The embedding model, vector index, and model weights are bundled locally. Enforced via AST inspection in `tests/test_no_network_isolation.py` and `scripts/smoke_test_no_network.sh`.
@@ -78,6 +80,7 @@ Trains low-rank LoRA matrices $A_t, B_t$ with the composite loss:
 $$\mathcal{L} = \mathcal{L}_{\text{CE}} + \lambda || A_t^T Q ||_F^2 + \lambda_{\text{distill}} \mathcal{L}_{\text{distill}}$$
 - $Q \in \mathbb{R}^{d \times k}$ is an orthonormal projection basis maintained via incremental QR decomposition across historical adapters.
 - **Sawtooth Basis Reset**: When Step E merges the adapter stack, $Q$ resets and rebuilds from $Q = \text{qr}(A_{\text{merged}})[0]$, preventing the orthogonal complement from shrinking over time.
+- **Resource Optimization**: Implements `torch.bfloat16` and garbage-collector buffer guards to enable seamless training and validation even on memory-constrained CPU environments.
 
 ### Step D — Validation Gate
 Evaluates candidate adapter against all seen regimes $1..t$. Computes Backward Transfer (BWT):
@@ -113,14 +116,19 @@ Endpoint `GET /audit/{query_id}` returns the complete answer provenance and merg
 
 ---
 
-## 5. End-to-End Quickstart (Reproduce in 2 Minutes)
+## 5. End-to-End Quickstart
 
-### Step 1: Install Dependencies
+### Step 1: Clone and Install Dependencies
 ```bash
+git clone https://github.com/riddhimaheshwari/InterIIT.git
+cd InterIIT
 pip install -r requirements.txt
 ```
 
+> **Automatic Model Fallback**: Large foundation model weights (Qwen2.5-0.5B and all-MiniLM-L6-v2) are intentionally excluded from git via `.gitignore`. If local weights are not detected in `artifacts/`, the pipeline will automatically fetch them directly from Hugging Face on the first run.
+
 ### Step 2: Run Quarterly Updates (Q1 → Q4)
+Execute the compliance update across each quarterly regime:
 ```bash
 python -m src.offline.pipeline --regime Q1
 python -m src.offline.pipeline --regime Q2
@@ -129,10 +137,11 @@ python -m src.offline.pipeline --regime Q4
 ```
 
 ### Step 3: Run the Edge Inference API
+Launch the isolated edge FastAPI service:
 ```bash
 python -m uvicorn src.online.api:app --host 0.0.0.0 --port 8000
 ```
-Test with curl or Python:
+Test with curl:
 ```bash
 # Valid grounded query
 curl -X POST http://localhost:8000/query \
@@ -147,25 +156,46 @@ curl -X POST http://localhost:8000/query \
 
 ### Step 4: Open the Streamlit Dashboard
 ```bash
-python -m streamlit run dashboard/app.py
+streamlit run dashboard/app.py
 ```
 Explore:
-- Continual learning curves (BWT, FWT, Average Accuracy across Q1-Q4)
-- Orthogonal basis rank sawtooth curve & bounded adapter footprint
-- Live edge query console with real-time provenance tracing
-- Cryptographic audit ledger verification
-- Cross-regime adversarial confusion benchmark
+- **Continual Learning Curves**: Live BWT, FWT, and Average Accuracy progression across Q1–Q4.
+- **Orthogonal Basis Sawtooth**: Parameter footprint and orthogonal projection rank visualization.
+- **Live Edge Query Console**: Real-time statutory question answering with temporal filtering.
+- **Cryptographic Audit Ledger**: Provable hash-chain verification and citation tracing.
+- **Adversarial Confusion Benchmarks**: Cross-quarter evaluation of conflicting/superseding regulations.
 
 ---
 
-## 6. Running Tests & Zero-Network Verification
+## 6. Deployment Guide
+
+### Option A: Streamlit Community Cloud (Free & Instant)
+1. Push this repository to GitHub (`riddhimaheshwari/InterIIT`).
+2. Go to [share.streamlit.io](https://share.streamlit.io) and log in with your GitHub account.
+3. Click **New app**, select:
+   - **Repository**: `riddhimaheshwari/InterIIT`
+   - **Branch**: `main`
+   - **Main file path**: `dashboard/app.py`
+4. Click **Deploy**.
+
+### Option B: Docker Deployment
+Build and run the interactive dashboard container:
+```bash
+docker build -f Dockerfile.dashboard -t amnesiac-magistrate-dashboard .
+docker run -p 8501:8501 amnesiac-magistrate-dashboard
+```
+Access the dashboard at `http://localhost:8501`.
+
+---
+
+## 7. Running Tests & Zero-Network Verification
 
 Run the full pytest suite:
 ```bash
-python -m pytest tests/ -v
+pytest tests/ -v
 ```
 
-Run the zero-network offline smoke test gate:
+Verify zero-network egress during inference:
 ```bash
 python -c "
 from src.online.infer import ComplianceInferenceEngine
@@ -177,3 +207,8 @@ assert res['status'] == 'success'
 print('Verified: Zero network calls during edge inference.')
 "
 ```
+
+---
+
+## 8. License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
