@@ -30,6 +30,17 @@ def get_engine():
         inference_engine = ComplianceInferenceEngine()
     return inference_engine
 
+try:
+    import spaces
+except ImportError:
+    class spaces:
+        @staticmethod
+        def GPU(func=None, **kwargs):
+            if func is None:
+                return lambda f: f
+            return func
+
+@spaces.GPU
 def run_query(user_query: str, regime_filter: str):
     if not user_query.strip():
         return "Please enter a query.", "N/A", "N/A", "None"
