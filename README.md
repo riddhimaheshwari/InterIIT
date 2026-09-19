@@ -1,7 +1,17 @@
+---
+title: Continual Counsel Legal AI
+emoji: ⚖️
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.32.0
+app_file: dashboard/app.py
+pinned: false
+---
+
 # Continual-Counsel: Edge-Deployable Legal Compliance Assistant with Orthogonal LoRA & Verifiable Auditability
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-riddhimaheshwari%2FInterIIT-181717?logo=github)](https://github.com/riddhimaheshwari/InterIIT)
 
 **Continual-Counsel** (The Amnesiac Magistrate) is an edge-deployable legal and regulatory compliance assistant engineered to ingest quarterly regulatory updates (Q1–Q4) without full retraining, without catastrophic forgetting of earlier regimes, and with strict verifiable auditability.
