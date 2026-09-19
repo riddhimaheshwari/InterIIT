@@ -3,7 +3,7 @@ import json
 import hashlib
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 
 GENESIS_HASH = "0" * 64
 
@@ -93,7 +93,7 @@ class AuditLogger:
         timestamp: Optional[str] = None
     ) -> Dict[str, Any]:
         if timestamp is None:
-            timestamp = datetime.utcnow().isoformat() + "Z"
+            timestamp = datetime.now(timezone.utc).isoformat()
 
         previous_hash = self._get_last_hash()
         record_hash = self.compute_record_hash(
