@@ -15,7 +15,7 @@ pinned: false
 [![GitHub Repository](https://img.shields.io/badge/GitHub-riddhimaheshwari%2FInterIIT-181717?logo=github)](https://github.com/riddhimaheshwari/InterIIT)
 
 **Continual-Counsel** (The Amnesiac Magistrate) is an edge-deployable legal and regulatory compliance assistant engineered to ingest quarterly regulatory updates (Q1–Q4) without full retraining, without catastrophic forgetting of earlier regimes, and with strict verifiable auditability.
-
+## Site Link: https://huggingface.co/spaces/Riddhi17/InterIIT
 ---
 
 ## 1. System Architecture: Strict Physical Loop Separation
