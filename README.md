@@ -167,28 +167,7 @@ Explore:
 
 ---
 
-## 6. Deployment Guide
-
-### Option A: Streamlit Community Cloud (Free & Instant)
-1. Push this repository to GitHub (`riddhimaheshwari/InterIIT`).
-2. Go to [share.streamlit.io](https://share.streamlit.io) and log in with your GitHub account.
-3. Click **New app**, select:
-   - **Repository**: `riddhimaheshwari/InterIIT`
-   - **Branch**: `main`
-   - **Main file path**: `dashboard/app.py`
-4. Click **Deploy**.
-
-### Option B: Docker Deployment
-Build and run the interactive dashboard container:
-```bash
-docker build -f Dockerfile.dashboard -t amnesiac-magistrate-dashboard .
-docker run -p 8501:8501 amnesiac-magistrate-dashboard
-```
-Access the dashboard at `http://localhost:8501`.
-
----
-
-## 7. Running Tests & Zero-Network Verification
+## 6. Running Tests & Zero-Network Verification
 
 Run the full pytest suite:
 ```bash
