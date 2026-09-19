@@ -1,0 +1,26 @@
+[
+  {
+    "id": "REPLAY-Q4-001",
+    "regime_id": "Q4",
+    "query": "Are compliance assistants permitted to make external cloud LLM API calls under sovereign compute rules?",
+    "answer": "Under Clause SVR-401, compliance inference must run locally on edge hardware with zero outbound internet connectivity, and external cloud LLM calls are prohibited.",
+    "key_conclusion": "401 | CLAUSE SVR-401",
+    "adapter_source": "adapter_ties_merged_Q1-Q4"
+  },
+  {
+    "id": "REPLAY-Q4-002",
+    "regime_id": "Q4",
+    "query": "What maximum accuracy degradation is allowed when converting compliance models to 4-bit GGUF for edge deployment?",
+    "answer": "Pursuant to Clause SVR-403, 4-bit or 8-bit GGUF quantization must not cause more than 1.5% benchmark degradation compared to FP16 reference weights.",
+    "key_conclusion": "1.5 | 4 | 403 | 8 | CLAUSE SVR-403",
+    "adapter_source": "adapter_ties_merged_Q1-Q4"
+  },
+  {
+    "id": "REPLAY-Q4-003",
+    "regime_id": "Q4",
+    "query": "What is the maximum allowed catastrophic forgetting threshold during quarterly adapter merges?",
+    "answer": "Clause SVR-404 mandates that quarterly adapter consolidation and merge operations preserve backward accuracy with less than 3% catastrophic forgetting.",
+    "key_conclusion": "3 | 404 | CLAUSE SVR-404",
+    "adapter_source": "adapter_ties_merged_Q1-Q4"
+  }
+]

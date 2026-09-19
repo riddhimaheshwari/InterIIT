@@ -1,0 +1,26 @@
+base_model: "meta-llama/Llama-3.1-8B-Instruct"
+fallback_models:
+  - "Ministral-8B-Instruct-2410"
+  - "Mistral-7B-Instruct-v0.3"
+  - "mock-llama-8b-compliance"
+
+paths:
+  data_dir: "data/regimes"
+  replay_cache_dir: "data/replay_cache"
+  adapters_dir: "artifacts/adapters"
+  registry_db: "artifacts/audit/registry.db"
+  audit_log_db: "artifacts/audit/audit_log.db"
+  faiss_index_dir: "artifacts/indices"
+  eval_reports_dir: "artifacts/reports"
+  runs_dir: "runs"
+
+embedding:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  local_path: "artifacts/embeddings/all-MiniLM-L6-v2"
+  dimension: 384
+  offline_mode: true
+
+logging:
+  wandb_enabled: false
+  wandb_project: "continual-counsel"
+  local_log_format: "json"

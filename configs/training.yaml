@@ -1,0 +1,42 @@
+lora:
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+training:
+  learning_rate: 0.0002
+  batch_size: 4
+  num_epochs: 1
+  lambda_orthogonality: 0.1
+  lambda_distillation: 0.05
+  replay_ratio: 0.30
+  max_seq_len: 512
+
+consolidation:
+  merge_cadence: 2
+  ties_trim_threshold: 0.20
+  validate_on_merge: true
+
+gating:
+  bwt_degradation_threshold: 0.03
+  retrieval_confidence_threshold: 0.65
+  retrieval_top_k: 5
+
+replay:
+  golden_refresh_enabled: false
+  self_consistency_samples: 2
+  grounding_check_enabled: true
+
+dpo:
+  enabled: false
+  revalidation_mode: "option_a"
+  learning_rate: 0.00005
+  beta: 0.1

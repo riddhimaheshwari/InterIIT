@@ -1,0 +1,76 @@
+{
+  "regime_id": "Q1",
+  "title": "AI Governance Framework - High-Risk Classification Act",
+  "effective_date": "2025-01-01",
+  "jurisdiction": "Global-Compliance-Zone",
+  "documents": [
+    {
+      "doc_id": "REG-Q1-DOC-01",
+      "clause_id": "Clause AI-101",
+      "title": "High-Risk AI System Classification",
+      "text": "Any artificial intelligence system deployed in critical infrastructure, employment screening, biometric identification, or credit scoring shall be classified as a High-Risk AI System. Operators must establish a documented risk mitigation protocol prior to production deployment.",
+      "keywords": [
+        "high-risk",
+        "classification",
+        "critical infrastructure",
+        "employment screening",
+        "biometric"
+      ],
+      "effective_date": "2025-01-01"
+    },
+    {
+      "doc_id": "REG-Q1-DOC-02",
+      "clause_id": "Clause AI-102",
+      "title": "Human-in-the-Loop Oversight Requirement",
+      "text": "High-Risk AI Systems must incorporate human-in-the-loop oversight mechanisms enabling an operator to intervene, override, or abort automated decisions within 15 seconds of an anomaly flag.",
+      "keywords": [
+        "human-in-the-loop",
+        "oversight",
+        "15 seconds",
+        "override",
+        "anomaly flag"
+      ],
+      "effective_date": "2025-01-01"
+    },
+    {
+      "doc_id": "REG-Q1-DOC-03",
+      "clause_id": "Clause AI-103",
+      "title": "Data Governance and Quality Standards",
+      "text": "Training, validation, and testing datasets for high-risk models must undergo bias assessments and statistical balance checks across demographic subgroups. Documented lineage records must be retained for 5 years.",
+      "keywords": [
+        "data governance",
+        "bias assessment",
+        "lineage",
+        "5 years",
+        "statistical balance"
+      ],
+      "effective_date": "2025-01-01"
+    },
+    {
+      "doc_id": "REG-Q1-DOC-04",
+      "clause_id": "Clause AI-104",
+      "title": "Initial Incident Reporting Timeline",
+      "text": "Operators must report any safety-critical malfunction or unexpected behavioral divergence of a high-risk system to the supervisory board within 14 calendar days of detection.",
+      "keywords": [
+        "incident reporting",
+        "14 calendar days",
+        "safety-critical",
+        "malfunction"
+      ],
+      "effective_date": "2025-01-01"
+    },
+    {
+      "doc_id": "REG-Q1-DOC-05",
+      "clause_id": "Clause AI-105",
+      "title": "Technical Documentation and Recordkeeping",
+      "text": "A comprehensive technical file detailing model architecture, hyperparameter selections, compute energy expenditure, and validation bounds must be updated prior to every major release.",
+      "keywords": [
+        "technical documentation",
+        "architecture",
+        "energy expenditure",
+        "validation bounds"
+      ],
+      "effective_date": "2025-01-01"
+    }
+  ]
+}

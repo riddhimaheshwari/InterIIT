@@ -1,0 +1,37 @@
+# Artifacts directory (contains downloaded models, embeddings, index caches, and generated adapters)
+# Note: Base models like Qwen2.5-0.5B (942 MB) exceed GitHub's 100 MB hard limit.
+artifacts/
+
+# Python caches and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments and dependencies
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and runtime runs
+runs/
+*.log
+
+# Large binary / model formats (safeguard)
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini

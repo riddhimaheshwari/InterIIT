@@ -1,0 +1,26 @@
+[
+  {
+    "id": "REPLAY-Q2-001",
+    "regime_id": "Q2",
+    "query": "What are the audit obligations for entities operating tier-1 algorithmic systems?",
+    "answer": "Under Clause AUD-201, tier-1 algorithmic operators must commission an annual independent third-party audit evaluating model drift, adversarial robustness, and disparate impact.",
+    "key_conclusion": "1 | 201 | CLAUSE AUD-201",
+    "adapter_source": "adapter_ties_merged_Q1-Q2"
+  },
+  {
+    "id": "REPLAY-Q2-002",
+    "regime_id": "Q2",
+    "query": "What rights does a consumer have when subjected to an adverse automated decision?",
+    "answer": "According to Clause AUD-202, consumers are legally entitled to receive a counterfactual explanation detailing principal factors and minimal input adjustments required for recourse.",
+    "key_conclusion": "202 | CLAUSE AUD-202",
+    "adapter_source": "adapter_ties_merged_Q1-Q2"
+  },
+  {
+    "id": "REPLAY-Q2-003",
+    "regime_id": "Q2",
+    "query": "What threshold of telemetry distributional delta triggers automated alert triage in production monitoring?",
+    "answer": "Under Clause AUD-203, continuous telemetry tracking prediction confidence must trigger alert triage when distributional delta exceeds 5%.",
+    "key_conclusion": "203 | 5 | CLAUSE AUD-203",
+    "adapter_source": "adapter_ties_merged_Q1-Q2"
+  }
+]

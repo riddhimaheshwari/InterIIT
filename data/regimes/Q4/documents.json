@@ -1,0 +1,60 @@
+{
+  "regime_id": "Q4",
+  "title": "Sovereign AI Compute & Cross-Border Weight Transfer Act",
+  "effective_date": "2025-10-01",
+  "jurisdiction": "Global-Compliance-Zone",
+  "documents": [
+    {
+      "doc_id": "REG-Q4-DOC-01",
+      "clause_id": "Clause SVR-401",
+      "title": "Edge Compute Mandate for Sensitive Jurisdictions",
+      "text": "Compliance inference processing personal or regulatory data must run fully on local edge hardware without outbound internet connectivity. No remote API calls to external cloud LLMs are permitted.",
+      "keywords": [
+        "edge compute",
+        "offline",
+        "no outbound internet",
+        "data sovereignty"
+      ],
+      "effective_date": "2025-10-01"
+    },
+    {
+      "doc_id": "REG-Q4-DOC-02",
+      "clause_id": "Clause SVR-402",
+      "title": "Model Weight Export and LoRA Adapter Provenance",
+      "text": "Cross-border transfers of fine-tuned LoRA adapters or quantized GGUF weights require documented cryptographically signed provenance certificates identifying the training lineage.",
+      "keywords": [
+        "adapter provenance",
+        "weight export",
+        "signed certificate",
+        "lineage"
+      ],
+      "effective_date": "2025-10-01"
+    },
+    {
+      "doc_id": "REG-Q4-DOC-03",
+      "clause_id": "Clause SVR-403",
+      "title": "Quantization Accuracy Safeguards",
+      "text": "When quantizing compliance models to 4-bit or 8-bit precision for edge deployment, degradation on the statutory benchmark suite must not exceed 1.5% compared to FP16 reference weights.",
+      "keywords": [
+        "quantization",
+        "4-bit GGUF",
+        "accuracy safeguard",
+        "1.5% threshold"
+      ],
+      "effective_date": "2025-10-01"
+    },
+    {
+      "doc_id": "REG-Q4-DOC-04",
+      "clause_id": "Clause SVR-404",
+      "title": "Continual Model Refresh Certification",
+      "text": "Quarterly adapter consolidation and merge operations must preserve backward accuracy on prior regimes with less than 3% catastrophic forgetting, verified via deterministic replay gates.",
+      "keywords": [
+        "continual refresh",
+        "backward accuracy",
+        "catastrophic forgetting",
+        "replay gate"
+      ],
+      "effective_date": "2025-10-01"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "regime_id": "Q3",
+  "title": "Automated System Liability & Critical Incident Enforcement",
+  "effective_date": "2025-07-01",
+  "jurisdiction": "Global-Compliance-Zone",
+  "documents": [
+    {
+      "doc_id": "REG-Q3-DOC-01",
+      "clause_id": "Clause INC-301",
+      "title": "Accelerated Critical Incident Notification",
+      "text": "Clause INC-301 supersedes the reporting timeline in Clause AI-104. Critical incidents resulting in financial loss or safety harm must now be reported to the national authority within 72 hours, not 14 days.",
+      "keywords": [
+        "incident notification",
+        "72 hours",
+        "supersedes AI-104",
+        "critical incident"
+      ],
+      "effective_date": "2025-07-01"
+    },
+    {
+      "doc_id": "REG-Q3-DOC-02",
+      "clause_id": "Clause INC-302",
+      "title": "Strict Liability for Autonomous Failures",
+      "text": "Deployers of autonomous decision agents without certified human oversight (as defined in AI-102) bear strict financial liability for quantifiable damages caused by algorithmic hallucinations or errors.",
+      "keywords": [
+        "strict liability",
+        "autonomous agent",
+        "damages",
+        "hallucinations"
+      ],
+      "effective_date": "2025-07-01"
+    },
+    {
+      "doc_id": "REG-Q3-DOC-03",
+      "clause_id": "Clause INC-303",
+      "title": "Tamper-Proof Audit Trail Requirement",
+      "text": "All inference decisions, retrieval contexts, and adapter version hashes must be cryptographically logged into a tamper-evident audit ledger retained for a minimum of 7 years.",
+      "keywords": [
+        "tamper-evident",
+        "cryptographic log",
+        "7 years",
+        "audit ledger",
+        "adapter hash"
+      ],
+      "effective_date": "2025-07-01"
+    },
+    {
+      "doc_id": "REG-Q3-DOC-04",
+      "clause_id": "Clause INC-304",
+      "title": "Automated Circuit Breakers",
+      "text": "Inference endpoints exceeding a 2% verification failure rate over a rolling 1-hour window must engage automated traffic throttling or graceful failover to human operators.",
+      "keywords": [
+        "circuit breaker",
+        "verification failure",
+        "throttling",
+        "failover"
+      ],
+      "effective_date": "2025-07-01"
+    }
+  ]
+}

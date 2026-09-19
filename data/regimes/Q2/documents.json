@@ -1,0 +1,61 @@
+{
+  "regime_id": "Q2",
+  "title": "Algorithmic Transparency & Model Auditing Standards",
+  "effective_date": "2025-04-01",
+  "jurisdiction": "Global-Compliance-Zone",
+  "documents": [
+    {
+      "doc_id": "REG-Q2-DOC-01",
+      "clause_id": "Clause AUD-201",
+      "title": "Mandatory Independent Model Audits",
+      "text": "Entities operating tier-1 algorithmic systems must commission an annual independent third-party audit evaluating model drift, adversarial robustness, and disparate impact metrics.",
+      "keywords": [
+        "third-party audit",
+        "tier-1",
+        "annual audit",
+        "model drift",
+        "adversarial robustness"
+      ],
+      "effective_date": "2025-04-01"
+    },
+    {
+      "doc_id": "REG-Q2-DOC-02",
+      "clause_id": "Clause AUD-202",
+      "title": "Explainability and Counterfactual Recourse",
+      "text": "Consumers subjected to adverse automated decisions are legally entitled to receive a plain-language counterfactual explanation detailing the principal factors and the minimal input adjustments required to alter the outcome.",
+      "keywords": [
+        "explainability",
+        "counterfactual explanation",
+        "recourse",
+        "adverse decision"
+      ],
+      "effective_date": "2025-04-01"
+    },
+    {
+      "doc_id": "REG-Q2-DOC-03",
+      "clause_id": "Clause AUD-203",
+      "title": "Continuous Production Telemetry Monitoring",
+      "text": "Real-time logging of prediction confidence scores and embedding similarity shifts must be maintained. Drift metrics exceeding a 5% distributional delta must trigger automated alert triage.",
+      "keywords": [
+        "telemetry",
+        "confidence logging",
+        "distributional delta",
+        "5% drift"
+      ],
+      "effective_date": "2025-04-01"
+    },
+    {
+      "doc_id": "REG-Q2-DOC-04",
+      "clause_id": "Clause AUD-204",
+      "title": "Model Card Publication Mandate",
+      "text": "Standardized public model cards specifying intended use, out-of-scope applications, evaluation benchmarks, and ethical considerations must accompany all commercial model releases.",
+      "keywords": [
+        "model card",
+        "intended use",
+        "ethical considerations",
+        "commercial release"
+      ],
+      "effective_date": "2025-04-01"
+    }
+  ]
+}

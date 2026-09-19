@@ -1,0 +1,18 @@
+[
+  {
+    "id": "REPLAY-Q3-001",
+    "regime_id": "Q3",
+    "query": "What is the mandatory reporting timeframe for critical AI malfunctions resulting in financial loss?",
+    "answer": "Under Clause INC-301, which supersedes AI-104, critical incidents must be reported to the national supervisory authority within 72 hours.",
+    "key_conclusion": "104 | 301 | 72 hours | CLAUSE INC-301",
+    "adapter_source": "adapter_ties_merged_Q1-Q3"
+  },
+  {
+    "id": "REPLAY-Q3-002",
+    "regime_id": "Q3",
+    "query": "How long must cryptographic inference audit trails and adapter hashes be stored?",
+    "answer": "Clause INC-303 requires all inference decisions, retrieval contexts, and adapter version hashes to be stored in a tamper-evident audit ledger for at least 7 years.",
+    "key_conclusion": "303 | 7 years | CLAUSE INC-303",
+    "adapter_source": "adapter_ties_merged_Q1-Q3"
+  }
+]

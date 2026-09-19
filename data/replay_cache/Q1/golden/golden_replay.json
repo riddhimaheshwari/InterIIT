@@ -1,0 +1,34 @@
+[
+  {
+    "id": "REPLAY-Q1-001",
+    "regime_id": "Q1",
+    "query": "What classification applies to an AI system deployed for biometric identification and credit scoring?",
+    "answer": "Under Clause AI-101, any AI system deployed in critical infrastructure, employment screening, biometric identification, or credit scoring is classified as a High-Risk AI System requiring documented risk mitigation.",
+    "key_conclusion": "101 | CLAUSE AI-101",
+    "adapter_source": "adapter_Q1"
+  },
+  {
+    "id": "REPLAY-Q1-002",
+    "regime_id": "Q1",
+    "query": "What is the maximum allowed response time for human oversight intervention upon an anomaly flag in high-risk AI?",
+    "answer": "Under Clause AI-102, human oversight mechanisms must enable an operator to intervene, override, or abort automated decisions within 15 seconds.",
+    "key_conclusion": "102 | 15 seconds | CLAUSE AI-102",
+    "adapter_source": "adapter_Q1"
+  },
+  {
+    "id": "REPLAY-Q1-003",
+    "regime_id": "Q1",
+    "query": "How long must training data lineage records be preserved for high-risk systems undergoing bias assessments?",
+    "answer": "Pursuant to Clause AI-103, training and validation datasets for high-risk models must undergo bias assessments and documented lineage records must be retained for 5 years.",
+    "key_conclusion": "103 | 5 years | CLAUSE AI-103",
+    "adapter_source": "adapter_Q1"
+  },
+  {
+    "id": "REPLAY-Q1-004",
+    "regime_id": "Q1",
+    "query": "What technical documentation must be maintained prior to major model releases?",
+    "answer": "Under Clause AI-105, operators must maintain a technical file detailing model architecture, hyperparameter choices, energy expenditure, and validation bounds.",
+    "key_conclusion": "105 | CLAUSE AI-105",
+    "adapter_source": "adapter_Q1"
+  }
+]
